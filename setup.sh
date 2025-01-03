@@ -1,10 +1,8 @@
 #!/bin/bash
 #
-# setup.sh v1.0 030507ZJAN25
-#
-# initial commit - update and upgrade, install build git python pip neofetch, then add personal aliases to bashrc
-# finally, we can choose to install rtl-sdr packages, adsb feeder packages, or the meshtastic cli environment
-# this works up to and including raspbian bullsye. bookworm changed python venv stuff and meshtastic gets cranky
+# setup.sh v1.1 030724ZJAN25
+# 
+# added screen 
 #
 echo -e "\e[36m\n-*-*-*-*-*-*-*-*-*-*-*-*-*-*-\e[0m"
 echo -e "\e[37m28tauri's raspbian setup script v1.3\n\e[0m"
@@ -20,7 +18,7 @@ echo -e "\e[1;33m\ninstalling python and pip (probably already here but need to 
 sudo apt-get install python3 python3-pip -y
 
 echo -e "\e[1;33m\ninstalling some random fun stuff\n\e[0m"
-sudo apt-get install neofetch -y
+sudo apt-get install neofetch screen -y
 
 echo -e "\e[1;33m\ngoing to try editing bashrc now\n\e[0m"
 cat << EOF >> ~/.bashrc
