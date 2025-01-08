@@ -1,11 +1,7 @@
 #!/bin/bash
 #
-# setup.sh v1.4 080042ZJAN25
-# 
-# removed extra whitespace, streamlined verbiage, added net-tools and nmap 
-#
 echo -e "\e[36m\n-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-\e[0m"
-echo -e "\e[37m28tauri's raspbian setup script v1.4\n\e[0m"
+echo -e "\e[37m28tauri's raspbian setup script v1.5\n\e[0m"
 echo -e "\e[36m-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-\n\e[0m"
 echo -e "\e[1;33m\nfirst, we update!\n\e[0m"
 sleep 2s
@@ -16,7 +12,7 @@ sudo apt-get install make cmake build-essential git -y
 echo -e "\e[1;33m\ninstalling python and pip\n\e[0m"
 sleep 2s
 sudo apt-get install python3 python3-pip -y
-echo -e "\e[1;33m\ninstalling misc utils\n\e[0m"
+echo -e "\e[1;33m\ninstalling misc utilsf\n\e[0m"
 sleep 2s
 sudo apt-get install neofetch screen net-tools nmap -y
 echo -e "\e[1;33m\nadding aliases to bashrc\n\e[0m"
@@ -30,6 +26,11 @@ alias snano='sudo nano'
 alias please='sudo'
 alias temp='vcgencmd measure_temp'
 EOF
+echo -e "\e[1;33m\ninstall docker? y/n\n\e[0m"
+read dockerreqs
+if [ $dockerreqs == "y" ]; then 
+	sudo curl -sSL https://get.docker.com | sh
+fi
 echo -e "\e[1;33m\nwant to install rtl-sdr stuff? y/n\n\e[0m"
 read rtlsdrreqs
 if [ $rtlsdrreqs == "y" ]; then 
@@ -59,7 +60,7 @@ if [ $adsbreqs == "y" ]; then
 	echo -e "\e[1;33m\nalso check both https://www.adsbexchange.com/myip/ and https://airplanes.live/myfeed/\n\e[0m"
 	echo -e "\e[1;33m\nmoving on!\n\e[0m"
 fi
-echo -e "\e[1;33m\ninstall meshtastic cli? y/n\n\e[0m"
+echo -e "\e[1;33m\ninstall meshtastic? y/n\n\e[0m"
 read meshpy
 if [ $meshpy == "y" ]; then 
 	echo -e "\e[1;33m\nadding user to relevant groups for serial access\n\e[0m"
