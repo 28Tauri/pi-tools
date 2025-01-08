@@ -16,7 +16,7 @@ sudo apt-get install make cmake build-essential git -y
 echo -e "\e[1;33m\ninstalling python and pip\n\e[0m"
 sleep 2s
 sudo apt-get install python3 python3-pip -y
-echo -e "\e[1;33m\ninstalling misc utilsf\n\e[0m"
+echo -e "\e[1;33m\ninstalling misc utils\n\e[0m"
 sleep 2s
 sudo apt-get install neofetch screen net-tools nmap -y
 echo -e "\e[1;33m\nadding aliases to bashrc\n\e[0m"
