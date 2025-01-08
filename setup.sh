@@ -1,26 +1,26 @@
 #!/bin/bash
 #
-# setup.sh v1.1 030724ZJAN25
+# setup.sh v1.4 080042ZJAN25
 # 
-# added screen 
+# removed extra whitespace, streamlined verbiage, added net-tools and nmap 
 #
-echo -e "\e[36m\n-*-*-*-*-*-*-*-*-*-*-*-*-*-*-\e[0m"
-echo -e "\e[37m28tauri's raspbian setup script v1.3\n\e[0m"
-echo -e "\e[36m-*-*-*-*-*-*-*-*-*-*-*-*-*-*-\n\e[0m"
-
+echo -e "\e[36m\n-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-\e[0m"
+echo -e "\e[37m28tauri's raspbian setup script v1.4\n\e[0m"
+echo -e "\e[36m-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-\n\e[0m"
 echo -e "\e[1;33m\nfirst, we update!\n\e[0m"
+sleep 2s
 sudo apt-get update && sudo apt-get upgrade -y 
-
-echo -e "\e[1;33m\ninstalling build stuff and git (probably already here but need to make sure)\n\e[0m"
+echo -e "\e[1;33m\ninstalling build stuff and git\n\e[0m"
+sleep 2s
 sudo apt-get install make cmake build-essential git -y
-
-echo -e "\e[1;33m\ninstalling python and pip (probably already here but need to make sure)\n\e[0m"
+echo -e "\e[1;33m\ninstalling python and pip\n\e[0m"
+sleep 2s
 sudo apt-get install python3 python3-pip -y
-
-echo -e "\e[1;33m\ninstalling some random fun stuff\n\e[0m"
-sudo apt-get install neofetch screen -y
-
-echo -e "\e[1;33m\ngoing to try editing bashrc now\n\e[0m"
+echo -e "\e[1;33m\ninstalling misc utilsf\n\e[0m"
+sleep 2s
+sudo apt-get install neofetch screen net-tools nmap -y
+echo -e "\e[1;33m\nadding aliases to bashrc\n\e[0m"
+sleep 2s
 cat << EOF >> ~/.bashrc
 alias ..='cd ..'
 alias ll='ls -lASh'
@@ -30,13 +30,11 @@ alias snano='sudo nano'
 alias please='sudo'
 alias temp='vcgencmd measure_temp'
 EOF
-
 echo -e "\e[1;33m\nwant to install rtl-sdr stuff? y/n\n\e[0m"
 read rtlsdrreqs
 if [ $rtlsdrreqs == "y" ]; then 
 	sudo apt-get install rtl-sdr rtl-433 -y 
 fi
-
 echo -e "\e[1;33m\nis this an adsb feeder? y/n\n\e[0m"
 read adsbreqs
 if [ $adsbreqs == "y" ]; then 
@@ -61,7 +59,6 @@ if [ $adsbreqs == "y" ]; then
 	echo -e "\e[1;33m\nalso check both https://www.adsbexchange.com/myip/ and https://airplanes.live/myfeed/\n\e[0m"
 	echo -e "\e[1;33m\nmoving on!\n\e[0m"
 fi
-
 echo -e "\e[1;33m\ninstall meshtastic cli? y/n\n\e[0m"
 read meshpy
 if [ $meshpy == "y" ]; then 
@@ -74,6 +71,5 @@ if [ $meshpy == "y" ]; then
 	pip3 install --upgrade "meshtastic[cli]"
 	echo -e "\e[1;33m\nignore the PATH error; meshtastic runs in venv anyway\n\e[0m"
 fi
-
 echo -e "\e[37m\nscript completed!\n\e[0m"
 exit 0
