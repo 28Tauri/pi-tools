@@ -26,6 +26,9 @@ alias snano='sudo nano'
 alias please='sudo'
 alias temp='vcgencmd measure_temp'
 EOF
+echo -e "\e[1;33m\nreloading bashrc\n\e[0m"
+sleep 2s
+. ~/.bashrc
 echo -e "\e[1;33m\ninstall docker? y/n\n\e[0m"
 read dockerreqs
 if [ $dockerreqs == "y" ]; then 
